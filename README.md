@@ -1,170 +1,87 @@
-# \# ComfyUI-Anima-Enhancer
+# ComfyUI-Anima-Enhancer
 
-# 
+A simple ComfyUI custom node for improving **Anima** generations.
 
-# A simple ComfyUI custom node for improving \*\*Anima\*\* generations.
+It adds the **Anima Layer Replay Patcher**, which can enhance fine detail and coherence by replaying selected internal blocks during denoising. It also includes an optional **Spectrum** mode for faster generation.
 
-# 
+In tested setups, Spectrum can improve generation speed by **around 35%**.
 
-# It adds the \*\*Anima Layer Replay Patcher\*\*, which can enhance fine detail and coherence by replaying selected internal blocks during denoising. It also includes an optional \*\*Spectrum\*\* mode for faster generation.
+## Features
 
-# 
+- Enhances fine detail and structural coherence on Anima models
+- Optional built-in Spectrum acceleration
+- Supports custom block selection
+- Simple workflow integration
 
-# In tested setups, Spectrum can improve generation speed by \*\*around 35%\*\*.
+## Node
 
-# 
+The node appears in ComfyUI as:  **Anima Layer Replay Patcher**
 
-# \## Features
+## Installation
 
-# 
+Open a terminal inside your ComfyUI `custom\_nodes` folder and run:
 
-# \- Enhances fine detail and structural coherence on Anima models
+```bash
+git clone https://github.com/AdamNizol/ComfyUI-Anima-Enhancer.git
+````
 
-# \- Optional built-in Spectrum acceleration
+Then restart ComfyUI.
 
-# \- Supports custom block selection
+Example folder layout after installation:
 
-# \- Simple workflow integration
+```text
+ComfyUI/
+└── custom\_nodes/
+  └── ComfyUI-Anima-Enhancer/
+```
 
-# 
+## Usage
 
-# \## Node
+Add the **Anima Layer Replay Patcher** node to your workflow and connect your model through it. Placing it directly before the sampler is advised.
 
-# 
+### Main inputs
 
-# The node appears in ComfyUI as:
+* **block_indices**
 
-# 
+  Comma-separated block list, for example:
 
-# \*\*Anima Layer Replay Patcher\*\*
+  * `3,4,5`
+  * `3,4,5,8`
 
-# 
+* **denoise_start_pct**
 
-# \## Installation
+  When replay begins during denoising
 
-# 
+* **denoise_end_pct**
 
-# Open a terminal inside your ComfyUI `custom\_nodes` folder and run:
+  When replay stops during denoising
 
-# 
+* **enable_spectrum**
 
-# ```bash
+  Turns on optional Spectrum acceleration
 
-# git clone https://github.com/AdamNizol/ComfyUI-Anima-Enhancer.git
+### Spectrum inputs
 
-# ````
+When Spectrum is enabled, these settings become active:
 
-# 
+* **spectrum_w**
+* **spectrum_m**
+* **spectrum_lam**
+* **spectrum_warmup_steps**
 
-# Then restart ComfyUI.
+## Recommended starting settings
 
-# 
+For many Anima tests, a strong starting point is:
 
-# Example folder layout after installation:
+* **block_indices:** `3,4,5`
+* **denoise_start_pct:** `0.50`
+* **denoise_end_pct:** `1.00`
 
-# 
+If using Spectrum, a good starting point is:
 
-# ```text
-
-# ComfyUI/
-
-# └── custom\_nodes/
-
-# &nbsp;   └── ComfyUI-Anima-Enhancer/
-
-# ```
-
-# 
-
-# \## Usage
-
-# 
-
-# Add the \*\*Anima Layer Replay Patcher\*\* node to your workflow and connect your model through it. Placing it directly before the sampler is advised.
-
-# 
-
-# \### Main inputs
-
-# 
-
-# \* \*\*block\_indices\*\*
-
-# &nbsp; Comma-separated block list, for example:
-
-# 
-
-# &nbsp; \* `3,4,5`
-
-# &nbsp; \* `3-5`
-
-# &nbsp; \* `3,4,5,8`
-
-# 
-
-# \* \*\*denoise\_start\_pct\*\*
-
-# &nbsp; When replay begins during denoising
-
-# 
-
-# \* \*\*denoise\_end\_pct\*\*
-
-# &nbsp; When replay stops during denoising
-
-# 
-
-# \* \*\*enable\_spectrum\*\*
-
-# &nbsp; Turns on optional Spectrum acceleration
-
-# 
-
-# \### Spectrum inputs
-
-# 
-
-# When Spectrum is enabled, these settings become active:
-
-# 
-
-# \* \*\*spectrum\_w\*\*
-
-# \* \*\*spectrum\_m\*\*
-
-# \* \*\*spectrum\_lam\*\*
-
-# \* \*\*spectrum\_warmup\_steps\*\*
-
-# 
-
-# \## Recommended starting settings
-
-# 
-
-# For many Anima tests, a strong starting point is:
-
-# 
-
-# \* \*\*block\_indices:\*\* `3,4,5`
-
-# \* \*\*denoise\_start\_pct:\*\* `0.50`
-
-# \* \*\*denoise\_end\_pct:\*\* `1.00`
-
-# 
-
-# If using Spectrum, a good starting point is:
-
-# 
-
-# \* \*\*enable\_spectrum:\*\* `true`
-
-# \* \*\*spectrum\_w:\*\* `0.2-0.3`
-
-# \* \*\*spectrum\_m:\*\* `8-16`
-
-# \* \*\*spectrum\_lam:\*\* `0.5`
-
-# \* \*\*spectrum\_warmup\_steps:\*\* `6`
+* **enable_spectrum:** `true`
+* **spectrum_w:** `0.2-0.3`
+* **spectrum_m:** `8-16`
+* **spectrum_lam:** `0.5`
+* **spectrum_warmup_steps:** `6`
 
