@@ -39,6 +39,8 @@ ComfyUI/
 
 Add the **Anima Layer Replay Patcher** node to your workflow and connect your model through it. Placing it directly before the sampler is advised.
 
+![Preview](node-screenshot.webp)
+
 ### Main inputs
 
 * **block_indices**
