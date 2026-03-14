@@ -19,7 +19,7 @@ The node appears in ComfyUI as:  **Anima Layer Replay Patcher**
 
 ## Installation
 
-Open a terminal inside your ComfyUI `custom\_nodes` folder and run:
+Open a terminal inside your ComfyUI `custom_nodes` folder and run:
 
 ```bash
 git clone https://github.com/AdamNizol/ComfyUI-Anima-Enhancer.git
@@ -31,7 +31,7 @@ Example folder layout after installation:
 
 ```text
 ComfyUI/
-└── custom\_nodes/
+└── custom_nodes/
   └── ComfyUI-Anima-Enhancer/
 ```
 
