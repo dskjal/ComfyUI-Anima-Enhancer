@@ -284,8 +284,6 @@ class AnimaLayerReplayPatcher:
       - integrated into the same UNet wrapper so it can coexist with replay
       - exposes w, m, lam, warmup_steps
       - fixed internally:
-          window_size = 2
-          flex_window = 0
           stop_caching_step = -1
     """
 
@@ -312,7 +310,7 @@ class AnimaLayerReplayPatcher:
                 "spectrum_lam": ("FLOAT", {"default": 0.50, "min": 0.0, "max": 100.0, "step": 0.01}),
                 "spectrum_warmup_steps": ("INT", {"default": 6, "min": 0, "max": 50, "step": 1}),
                 "spectrum_window_size": ("INT", {"default": 2, "min": 1, "step": 1}),
-                "spectrum_flex_window": ("FLOAT", {"default": 0.75, "min": 0.0, "max": 1.0, "step": 0.01}),
+                "spectrum_flex_window": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.01}),
             }
         }
 
